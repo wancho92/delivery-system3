@@ -93,6 +93,10 @@ public class Order  {
         // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
 
 
+        deliverysystem.external.Pay pay = new deliverysystem.external.Pay();
+        // mappings goes here
+        OrderApplication.applicationContext.getBean(deliverysystem.external.PayService.class)
+            .acceptPay(pay);
 
 
         OrderPlaced orderPlaced = new OrderPlaced(this);

@@ -1,5 +1,6 @@
 package deliverysystem.domain;
 
+import deliverysystem.domain.PayAccepted;
 import deliverysystem.domain.PayCanceled;
 import deliverysystem.PayApplication;
 import javax.persistence.*;
@@ -47,6 +48,11 @@ public class Pay  {
     public void onPostPersist(){
 
 
+        PayAccepted payAccepted = new PayAccepted(this);
+        payAccepted.publishAfterCommit();
+
+
+
         PayCanceled payCanceled = new PayCanceled(this);
         payCanceled.publishAfterCommit();
 
@@ -59,11 +65,6 @@ public class Pay  {
 
 
 
-    public void acceptPay(){
-        PayAccepted payAccepted = new PayAccepted(this);
-        payAccepted.publishAfterCommit();
-
-    }
 
     public static void cancelPay(OrderCanceled orderCanceled){
 

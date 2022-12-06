@@ -11,7 +11,6 @@ public class PayHateoasProcessor implements RepresentationModelProcessor<EntityM
 
     @Override
     public EntityModel<Pay> process(EntityModel<Pay> model) {
-        model.add(Link.of(model.getRequiredLink("self").getHref() + "/acceptcook").withRel("acceptcook"));
 
         
         return model;
