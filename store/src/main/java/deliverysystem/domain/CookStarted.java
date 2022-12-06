@@ -1,0 +1,26 @@
+package deliverysystem.domain;
+
+import deliverysystem.domain.*;
+import deliverysystem.infra.AbstractEvent;
+import java.util.*;
+import lombok.*;
+
+
+@Data
+@ToString
+public class CookStarted extends AbstractEvent {
+
+    private Long id;
+    private String status;
+    private Long foodId;
+    private Long orderId;
+    private String option;
+    private Long storeId;
+
+    public CookStarted(Cook aggregate){
+        super(aggregate);
+    }
+    public CookStarted(){
+        super();
+    }
+}
