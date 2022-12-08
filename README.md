@@ -133,10 +133,39 @@
     - 
     주문 서비스에 서킷 브레이커를 적용하여 구현한다.
     
-    - 
+    - 주문시 호출하는 Pay 클래스의 onPostPersist 메소드 로직에 딜레이를 발생시킨다.
     
-- Gateway / Ingress
+    ![image](https://user-images.githubusercontent.com/62365645/206552327-1c31aba1-77b5-49fa-9ba9-da984512fea1.png)
 
+    - 결제 서버에 서킷브레이커 설정(application.yml)
+
+    ![image](https://user-images.githubusercontent.com/62365645/206552725-b8fe3bda-6568-4060-978a-5f85d87d3286.png)
+
+    - siege 명령어로 주문을 요청한다.
+
+    ![image](https://user-images.githubusercontent.com/62365645/206553281-ad5fd8ae-0000-46ee-ad2c-521bb5b1d492.png)
+
+    ![image](https://user-images.githubusercontent.com/62365645/206553232-8c98c197-b59f-48dc-a458-9824f132a50d.png)
+
+- Gateway / Ingress
+    -
+    게이트웨이를 적용하여 주문 서비스로 라우팅을 추가한다.
+    
+    - 게이트웨이 서버 설정(application.yml)
+    
+    ![image](https://user-images.githubusercontent.com/62365645/206555239-6c28750b-1a93-49a6-a39e-47a483b544b6.png)
+
+    - 기존 8081 포트로 주문 1건을 요청한다.
+
+    ![image](https://user-images.githubusercontent.com/62365645/206555596-3c4a8576-4009-4f83-b56f-99de3e8579fb.png)
+
+    - 게이트웨이 8088 포트로 주문 1건을 요청한다.
+    
+    ![image](https://user-images.githubusercontent.com/62365645/206555634-c911e970-fbd7-49f0-ace5-fffced6cf4cb.png)
+
+    - 주문 정보를 조회한다.(주문 2건 
+
+    ![image](https://user-images.githubusercontent.com/62365645/206555789-06b2e04a-8199-44e8-86d3-80ca08dfd306.png)
 
 
 
