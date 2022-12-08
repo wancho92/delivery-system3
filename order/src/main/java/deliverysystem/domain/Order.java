@@ -110,6 +110,9 @@ public class Order  {
         orderPlaced.publishAfterCommit();
 
     }
+    @PreUpdate
+    public void onPreUpdate(){
+    }
     @PreRemove
     public void onPreRemove(){
 
