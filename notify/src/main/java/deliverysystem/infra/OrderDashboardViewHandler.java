@@ -157,6 +157,45 @@ public class OrderDashboardViewHandler {
             e.printStackTrace();
         }
     }
+    @StreamListener(KafkaProcessor.INPUT)
+    public void whenCookStarted_then_UPDATE_7(@Payload CookStarted cookStarted) {
+        try {
+            if (!cookStarted.validate()) return;
+                // view 객체 조회
+            Optional<OrderDashboard> orderDashboardOptional = orderDashboardRepository.findById(cookStarted.getOrderId());
+
+            if( orderDashboardOptional.isPresent()) {
+                 OrderDashboard orderDashboard = orderDashboardOptional.get();
+            // view 객체에 이벤트의 eventDirectValue 를 set 함
+                // view 레파지 토리에 save
+                 orderDashboardRepository.save(orderDashboard);
+                }
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    @StreamListener(KafkaProcessor.INPUT)
+    public void whenCookFinished_then_UPDATE_8(@Payload CookFinished cookFinished) {
+        try {
+            if (!cookFinished.validate()) return;
+                // view 객체 조회
+            Optional<OrderDashboard> orderDashboardOptional = orderDashboardRepository.findById(cookFinished.getOrderId());
+
+            if( orderDashboardOptional.isPresent()) {
+                 OrderDashboard orderDashboard = orderDashboardOptional.get();
+            // view 객체에 이벤트의 eventDirectValue 를 set 함
+                orderDashboard.setStatus(""조리완료됨");    
+                // view 레파지 토리에 save
+                 orderDashboardRepository.save(orderDashboard);
+                }
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
 
 }

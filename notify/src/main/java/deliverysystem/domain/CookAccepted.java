@@ -1,11 +1,11 @@
 package deliverysystem.domain;
 
-import deliverysystem.domain.*;
 import deliverysystem.infra.AbstractEvent;
-import lombok.*;
+import lombok.Data;
 import java.util.*;
+
+
 @Data
-@ToString
 public class CookAccepted extends AbstractEvent {
 
     private Long id;
@@ -15,5 +15,3 @@ public class CookAccepted extends AbstractEvent {
     private String option;
     private Long storeId;
 }
-
-
