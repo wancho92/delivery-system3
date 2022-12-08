@@ -186,7 +186,7 @@ public class OrderDashboardViewHandler {
             if( orderDashboardOptional.isPresent()) {
                  OrderDashboard orderDashboard = orderDashboardOptional.get();
             // view 객체에 이벤트의 eventDirectValue 를 set 함
-                orderDashboard.setStatus(""조리완료됨");    
+                orderDashboard.setStatus("조리완료됨");    
                 // view 레파지 토리에 save
                  orderDashboardRepository.save(orderDashboard);
                 }

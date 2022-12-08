@@ -1,11 +1,11 @@
 package deliverysystem.domain;
 
+import deliverysystem.domain.*;
 import deliverysystem.infra.AbstractEvent;
-import lombok.Data;
+import lombok.*;
 import java.util.*;
-
-
 @Data
+@ToString
 public class DeliveryAccepted extends AbstractEvent {
 
     private Long id;
@@ -15,3 +15,5 @@ public class DeliveryAccepted extends AbstractEvent {
     private Integer tel;
     private String addr;
 }
+
+
