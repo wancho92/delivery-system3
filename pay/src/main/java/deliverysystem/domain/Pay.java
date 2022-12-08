@@ -46,16 +46,19 @@ public class Pay  {
 
     @PostPersist
     public void onPostPersist(){
-
-
-        PayAccepted payAccepted = new PayAccepted(this);
-        payAccepted.publishAfterCommit();
-
-
-
-        PayCanceled payCanceled = new PayCanceled(this);
-        payCanceled.publishAfterCommit();
-
+        System.out.println("@@@ Pay.onPostPersist in.. @@");
+        System.out.println("@@@ Pay.onPostPersist.id=" + id);
+        System.out.println("@@@ Pay.onPostPersist.price=" + price);
+        System.out.println("@@@ Pay.onPostPersist.status=" + status);
+        
+        if("주문완료".equals(status)) {
+            PayAccepted payAccepted = new PayAccepted(this);
+            payAccepted.publishAfterCommit();
+        }
+        else if("주문취소".equals(status)) {
+            PayCanceled payCanceled = new PayCanceled(this);
+            payCanceled.publishAfterCommit();
+        }
     }
 
     public static PayRepository repository(){
@@ -67,29 +70,13 @@ public class Pay  {
 
 
     public static void cancelPay(OrderCanceled orderCanceled){
-
-        /** Example 1:  new item 
-        Pay pay = new Pay();
-        repository().save(pay);
-
-        PayCanceled payCanceled = new PayCanceled(pay);
-        payCanceled.publishAfterCommit();
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(orderCanceled.get???()).ifPresent(pay->{
-            
-            pay // do something
+        repository().findByOrderId(orderCanceled.getId()).ifPresent(pay->{
+            pay.setStatus("주문취소");
             repository().save(pay);
 
             PayCanceled payCanceled = new PayCanceled(pay);
             payCanceled.publishAfterCommit();
-
-         });
-        */
-
-        
+         });      
     }
 
 
