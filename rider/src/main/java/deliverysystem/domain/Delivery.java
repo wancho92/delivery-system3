@@ -66,58 +66,43 @@ public class Delivery  {
 
 
     public void pickCook(){
+        System.out.println("@@@ Delivery.pickCook ==> 배송시작");
+        setStatus("배송시작");
         DeliveryPicked deliveryPicked = new DeliveryPicked(this);
         deliveryPicked.publishAfterCommit();
-
     }
     public void acceptDelivery(){
+        System.out.println("@@@ Delivery.acceptDelivery ==> 배송완료");
+        setStatus("배송완료");
         DeliveryAccepted deliveryAccepted = new DeliveryAccepted(this);
         deliveryAccepted.publishAfterCommit();
-
     }
-
     public static void registerOrder(OrderPlaced orderPlaced){
+        System.out.println("@@@ Delivery.registerOrder in.. @@");
+        System.out.println("@@@ Delivery.registerOrder.orderId=" + orderPlaced.getId());
+        System.out.println("@@@ Delivery.registerOrder.name=" + orderPlaced.getName());
+        System.out.println("@@@ Delivery.registerOrder.tel=" + orderPlaced.getTel());
+        System.out.println("@@@ Delivery.registerOrder.addr=" + orderPlaced.getAddr());
 
-        /** Example 1:  new item 
         Delivery delivery = new Delivery();
+        delivery.setOrderId(orderPlaced.getId());
+        delivery.setName(orderPlaced.getName());
+        delivery.setTel(orderPlaced.getTel());
+        delivery.setAddr(orderPlaced.getAddr());
+        delivery.setStatus("주문완료");
         repository().save(delivery);
-
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(orderPlaced.get???()).ifPresent(delivery->{
-            
-            delivery // do something
-            repository().save(delivery);
-
-
-         });
-        */
-
-        
     }
+
     public static void updateStatus(CookFinished cookFinished){
+        System.out.println("@@@ Delivery.updateStatus in.. @@");
+        System.out.println("@@@ Delivery.updateStatus.orderId=" + cookFinished.getOrderId());
+               
+        repository().findByOrderId(cookFinished.getOrderId()).ifPresent(delivery->{
+            System.out.println("@@@ Delivery.updateStatus ==> 조리완료");
 
-        /** Example 1:  new item 
-        Delivery delivery = new Delivery();
-        repository().save(delivery);
-
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(cookFinished.get???()).ifPresent(delivery->{
-            
-            delivery // do something
+            delivery.setStatus("조리완료");
             repository().save(delivery);
-
-
-         });
-        */
-
-        
+         });       
     }
-
 
 }
