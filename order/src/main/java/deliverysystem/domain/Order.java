@@ -2,7 +2,6 @@ package deliverysystem.domain;
 
 import deliverysystem.domain.OrderPlaced;
 import deliverysystem.domain.OrderCanceled;
-import deliverysystem.domain.OrderAddRequested;
 import deliverysystem.OrderApplication;
 import javax.persistence.*;
 import java.util.List;
@@ -117,11 +116,6 @@ public class Order  {
         OrderCanceled orderCanceled = new OrderCanceled(this);
         orderCanceled.publishAfterCommit();
 
-
-
-        OrderAddRequested orderAddRequested = new OrderAddRequested(this);
-        orderAddRequested.publishAfterCommit();
-
     }
 
     public static OrderRepository repository(){
@@ -131,6 +125,11 @@ public class Order  {
 
 
 
+    public void addRequest(){
+        OrderAddRequested orderAddRequested = new OrderAddRequested(this);
+        orderAddRequested.publishAfterCommit();
+
+    }
 
 
 
