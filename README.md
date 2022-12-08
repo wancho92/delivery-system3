@@ -30,31 +30,31 @@
 
 # 분석/설계
 ### 모델
-![image](https://user-images.githubusercontent.com/62365645/206515288-8b867bfb-95aa-4586-8387-d1e49da08e61.png)
+![image](https://user-images.githubusercontent.com/62365645/206571253-9cb0a30d-9862-4abd-9e2c-64be2f272261.png)
 
 ### 기능 요구사항에 대한 검증
-![image](https://user-images.githubusercontent.com/62365645/206517061-30b41c21-87c5-4e6b-a570-00bd24e8d56c.png)
+![image](https://user-images.githubusercontent.com/62365645/206571422-58b6c999-9549-4f22-9b8c-0c9b4f2992fe.png)
 
 
     - 고객이 메뉴를 선택하여 주문한다. (ok)
     - 고객이 선택한 메뉴에 대해 결제한다. (ok)
     - 주문이 되면 주문 내역이 입점상점주인에게 주문정보가 전달된다. (ok)
 
-![image](https://user-images.githubusercontent.com/62365645/206518672-c3f21d49-d1d2-4422-acbb-8c84c3966175.png)
+![image](https://user-images.githubusercontent.com/62365645/206571514-8b6c7f35-43d0-4aed-b811-3a9825e90fc6.png)
 
 
     - 상점주는 주문을 수락하거나 거절할 수 있다. (ok)
     - 상점주는 요리시작때와 완료 시점에 시스템에 상태를 입력한다. (ok)
     - 고객은 아직 요리가 시작되지 않은 주문은 취소할 수 있다. (ok)
 
-![image](https://user-images.githubusercontent.com/62365645/206518916-ef7bb52a-7b80-4567-9890-ceedd349c47e.png)
+![image](https://user-images.githubusercontent.com/62365645/206571598-43a0a173-bc71-42fa-af42-7bd0f2c5467f.png)
 
 
     - 요리가 완료되면 고객의 지역 인근의 라이더들에 의해 배송건 조회가 가능하다. (ok)
     - 라이더가 해당 요리를 Pick한 후, 앱을 통해 통보한다. (ok)
     - 고객이 주문상태를 중간중간 조회한다. (ok)
     
-![image](https://user-images.githubusercontent.com/62365645/206519258-de4f029a-e027-4aec-be1c-924b7a53a560.png)
+![image](https://user-images.githubusercontent.com/62365645/206571657-f2153bcb-eed8-4281-8178-191981aaa27f.png)
 
     
     - 주문상태가 바뀔 때 마다 카톡으로 알림을 보낸다. (ok)
