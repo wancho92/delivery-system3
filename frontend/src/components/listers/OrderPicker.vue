@@ -44,6 +44,9 @@
                             <v-list-item-subtitle>
                                 FoodNm :  {{item.foodNm }}
                             </v-list-item-subtitle>
+                            <v-list-item-subtitle>
+                                Cntn :  {{item.cntn }}
+                            </v-list-item-subtitle>
                         </v-list-item-content>
 
                         <v-list-item-action>
@@ -95,6 +98,8 @@
                 if(val != undefined) {
                     var arr = this.list[val]._links.self.href.split('/');
                     obj['id'] = arr[4]; 
+                    
+                    
                     
                     
                     

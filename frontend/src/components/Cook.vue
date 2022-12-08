@@ -22,6 +22,7 @@
             <Number label="OrderId" v-model="value.orderId" :editMode="editMode"/>
             <String label="Option" v-model="value.option" :editMode="editMode"/>
             <Number label="StoreId" v-model="value.storeId" :editMode="editMode"/>
+            <String label="Cntn" v-model="value.cntn" :editMode="editMode"/>
         </v-card-text>
 
         <v-card-actions>

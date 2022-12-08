@@ -85,6 +85,12 @@ public class Order  {
     
     
     private String foodNm;
+    
+    
+    
+    
+    
+    private String cntn;
 
     @PostPersist
     public void onPostPersist(){
@@ -119,6 +125,11 @@ public class Order  {
 
 
 
+    public void addRequest(){
+        OrderAddRequested orderAddRequested = new OrderAddRequested(this);
+        orderAddRequested.publishAfterCommit();
+
+    }
 
 
 

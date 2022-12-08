@@ -78,6 +78,7 @@
                 'storeId': 0,
                 'status': '',
                 'foodNm': '',
+                'cntn': '',
             }
         },
         methods:{
