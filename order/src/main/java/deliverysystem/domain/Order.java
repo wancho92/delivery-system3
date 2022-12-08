@@ -125,7 +125,7 @@ public class Order  {
 
 
 
-    public void addRequest(){
+    public void addRequest(AddRequestCommand addRequestCommand){
         OrderAddRequested orderAddRequested = new OrderAddRequested(this);
         orderAddRequested.publishAfterCommit();
 
