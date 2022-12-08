@@ -30,6 +30,22 @@ public class PolicyHandler{
         // Sample Logic //
         Pay.cancelPay(event);
     }
+    @StreamListener(value=KafkaProcessor.INPUT, condition="headers['type']=='CookCanceled'")
+    public void wheneverCookCanceled_CancelPay(@Payload CookCanceled cookCanceled){
+
+        CookCanceled event = cookCanceled;
+        System.out.println("\n\n##### listener CancelPay : " + cookCanceled + "\n\n");
+
+
+        
+
+        // Sample Logic //
+        Pay.cancelPay(event);
+        
+
+        
+
+    }
 
 }
 

@@ -87,7 +87,7 @@ public class OrderDashboardViewHandler {
             if( orderDashboardOptional.isPresent()) {
                  OrderDashboard orderDashboard = orderDashboardOptional.get();
             // view 객체에 이벤트의 eventDirectValue 를 set 함
-                orderDashboard.setStatus("주문접수됨");    
+                orderDashboard.setStatus("주문승인됨");    
                 // view 레파지 토리에 save
                  orderDashboardRepository.save(orderDashboard);
                 }
@@ -98,10 +98,20 @@ public class OrderDashboardViewHandler {
         }
     }
     @StreamListener(KafkaProcessor.INPUT)
-    public void whenOrderCanceled_then_UPDATE_4(@Payload OrderCanceled orderCanceled) {
+    public void whenCookCanceled_then_UPDATE_4(@Payload CookCanceled cookCanceled) {
         try {
-            if (!orderCanceled.validate()) return;
+            if (!cookCanceled.validate()) return;
                 // view 객체 조회
+            Optional<OrderDashboard> orderDashboardOptional = orderDashboardRepository.findById(cookCanceled.getOrderId());
+
+            if( orderDashboardOptional.isPresent()) {
+                 OrderDashboard orderDashboard = orderDashboardOptional.get();
+            // view 객체에 이벤트의 eventDirectValue 를 set 함
+                orderDashboard.setStatus("주문취소됨");    
+                // view 레파지 토리에 save
+                 orderDashboardRepository.save(orderDashboard);
+                }
+
 
         }catch (Exception e){
             e.printStackTrace();
