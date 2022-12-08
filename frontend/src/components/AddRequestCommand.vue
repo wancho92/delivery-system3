@@ -6,7 +6,6 @@
         </v-card-title>
 
         <v-card-text>
-            <String label="Cntn" v-model="value.cntn" :editMode="editMode"/>
         </v-card-text>
 
         <v-card-actions>
@@ -42,7 +41,6 @@
             value: {},
         }),
         created() {
-            this.value.cntn = '';
         },
         watch: {
         },
