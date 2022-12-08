@@ -88,28 +88,29 @@ public class Order  {
 
     @PostPersist
     public void onPostPersist(){
-
-        //Following code causes dependency to external APIs
-        // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
-
-
         deliverysystem.external.Pay pay = new deliverysystem.external.Pay();
-        // mappings goes here
+        pay.setOrderId(id);
+        pay.setPrice(price);
+        pay.setStatus("주문완료");
+
         OrderApplication.applicationContext.getBean(deliverysystem.external.PayService.class)
             .acceptPay(pay);
 
-
         OrderPlaced orderPlaced = new OrderPlaced(this);
+        orderPlaced.setStatus("주문완료");
         orderPlaced.publishAfterCommit();
-
     }
+
     @PreRemove
     public void onPreRemove(){
-
+        if("주문승인".equals(status) || "조리시작".equals(status)){
+            System.out.println(status + " 되었습니다. 주문취소는 불가능합니다.");
+            return;
+        }
 
         OrderCanceled orderCanceled = new OrderCanceled(this);
+        orderCanceled.setStatus("주문취소");
         orderCanceled.publishAfterCommit();
-
     }
 
     public static OrderRepository repository(){
