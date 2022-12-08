@@ -61,23 +61,80 @@
 # 체크포인트
 
 - Saga(Pub/Sub)
-   -
-   마이크로 서비스간의 통신에서 이벤트 메세지를 비동기(Pub/Sub)로 구현한다.
+    -
+    마이크로 서비스간의 통신에서 이벤트 메세지를 비동기(Pub/Sub)로 구현한다.
    
-   
-- CQRS
-  -
-  주문상태를 조회할 수 있도록 Query 모델(Materialized View)을 설계하여 조회한다.
- 
-  - ViewHandler.java 클래스 구현
-  
-  ![image](https://user-images.githubusercontent.com/62365645/206524553-c9636675-b69d-4e38-85a6-c15d2b851647.png)
+    - Order.java 클래스의 onPostPersist 메소드 구현
+    
+    ![image](https://user-images.githubusercontent.com/62365645/206526457-f315ce04-427e-4054-b81d-771c1727b356.png)
 
+    - 주문 1건을 요청한다.
+    
+    ![image](https://user-images.githubusercontent.com/62365645/206526947-4475c00f-19c1-4a7f-9804-8febd07e07dc.png)  
+   
+    - 주문 정보를 조회한다.
+
+    ![image](https://user-images.githubusercontent.com/62365645/206529502-664cee23-5015-4686-8452-25827eae4ab6.png)
+
+- CQRS
+    -
+    주문상태를 중간중간 조회할 수 있도록 관리한다.
+ 
+    - ViewHandler.java 클래스 구현
   
+    ![image](https://user-images.githubusercontent.com/62365645/206524553-c9636675-b69d-4e38-85a6-c15d2b851647.png)
+
+    - 주문상태를 확인한다.
+  
+    ![image](https://user-images.githubusercontent.com/62365645/206525395-b94089a4-40f9-41ab-961f-52efc8c5780a.png)
 
 - Compensation / Correlation
+    -
+    주문을 취소하여 주문 정보를 삭제한다.
+    
+    - Order.java 클래스의 onPreRemove 메소드 구현
+
+    ![image](https://user-images.githubusercontent.com/62365645/206531164-97287347-c1a0-4b55-ae73-93ea33f029a0.png)
+
+    - Pay.java 클래스의 cancelPay 메소드 호출
+    
+    ![image](https://user-images.githubusercontent.com/62365645/206531781-65e3850f-5847-476b-82d1-f8344576b464.png)
+
+    - Pay.java 클래스의 cancelPay 메소드 구현
+
+    ![image](https://user-images.githubusercontent.com/62365645/206532509-de9423e4-01a8-445e-a733-fba5e066e1ba.png)
+
+    - 주문 1건을 삭제 요청한다.
+
+    ![image](https://user-images.githubusercontent.com/62365645/206532666-9dfb5f4e-95e0-492d-a01e-0432cb1efb48.png)
+
+    - 정상적으로 삭제 되었는지 확인한다.
+    
+    ![image](https://user-images.githubusercontent.com/62365645/206533008-448b9907-0ec8-4656-83b4-c013d338d657.png)
+
+
 - Request / Response
+    -
+    주문시 결제 정보를 생성하기 위해 원격 호출(Request/Response) 방식으로 구현한다.
+    
+    - Order.java 클래스의 onPostPersist 메소드 구현
+    
+    ![image](https://user-images.githubusercontent.com/62365645/206535369-b2e2d96f-a08f-42d8-b9b2-961cdf7ca6b2.png)
+
+    - 주문 1건을 요청한다.(결제 서버가 비정상인 경우)
+
+    ![image](https://user-images.githubusercontent.com/62365645/206537422-76901a3b-eb1d-4543-9497-750b674a6736.png)
+
+    - 요청한 주문 1건이 생성되지 않은것을 확인한다.
+
+    ![image](https://user-images.githubusercontent.com/62365645/206537481-3d1e7274-e29c-4aeb-95a5-6d9e9953ee8c.png)
+
 - Circuit Breaker
+    - 
+    주문 서비스에 서킷 브레이커를 적용하여 구현한다.
+    
+    - 
+    
 - Gateway / Ingress
 
 
