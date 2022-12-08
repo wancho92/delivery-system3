@@ -91,6 +91,31 @@ public class Pay  {
 
         
     }
+    public static void cancelPay(CookCanceled cookCanceled){
+
+        /** Example 1:  new item 
+        Pay pay = new Pay();
+        repository().save(pay);
+
+        PayCanceled payCanceled = new PayCanceled(pay);
+        payCanceled.publishAfterCommit();
+        */
+
+        /** Example 2:  finding and process
+        
+        repository().findById(cookCanceled.get???()).ifPresent(pay->{
+            
+            pay // do something
+            repository().save(pay);
+
+            PayCanceled payCanceled = new PayCanceled(pay);
+            payCanceled.publishAfterCommit();
+
+         });
+        */
+
+        
+    }
 
 
 }
