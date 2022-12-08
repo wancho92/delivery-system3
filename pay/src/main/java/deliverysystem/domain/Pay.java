@@ -7,7 +7,8 @@ import javax.persistence.*;
 import java.util.List;
 import lombok.Data;
 import java.util.Date;
-
+import org.springframework.transaction.support.TransactionSynchronizationAdapter;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 @Entity
 @Table(name="Pay_table")
@@ -53,7 +54,20 @@ public class Pay  {
         
         if("주문완료".equals(status)) {
             PayAccepted payAccepted = new PayAccepted(this);
-            payAccepted.publishAfterCommit();
+            //payAccepted.publishAfterCommit();
+
+            TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronizationAdapter() {
+                @Override
+                public void beforeCommit(boolean readOnly) {
+                    payAccepted.publish();
+                }
+            });
+            
+            try {
+                Thread.currentThread().sleep((long) (1000 + Math.random() * 220));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         else if("주문취소".equals(status)) {
             PayCanceled payCanceled = new PayCanceled(this);

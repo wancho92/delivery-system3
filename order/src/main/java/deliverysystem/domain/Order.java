@@ -97,7 +97,6 @@ public class Order  {
             .acceptPay(pay);
 
         OrderPlaced orderPlaced = new OrderPlaced(this);
-        orderPlaced.setStatus("주문완료");
         orderPlaced.publishAfterCommit();
     }
 

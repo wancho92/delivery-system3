@@ -9,4 +9,9 @@ import java.util.*;
 public class DeliveryPicked extends AbstractEvent {
 
     private Long id;
+    private String status;
+    private Long orderId;
+    private String name;
+    private Integer tel;
+    private String addr;
 }
