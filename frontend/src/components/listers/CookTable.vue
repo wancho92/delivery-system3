@@ -72,6 +72,7 @@
                     { text: "orderId", value: "orderId" },
                     { text: "option", value: "option" },
                     { text: "storeId", value: "storeId" },
+                    { text: "cntn", value: "cntn" },
                 ],
             cook : [],
             newValue: {},
@@ -94,6 +95,7 @@
                 'orderId': 0,
                 'option': '',
                 'storeId': 0,
+                'cntn': '',
             }
         },
         methods: {

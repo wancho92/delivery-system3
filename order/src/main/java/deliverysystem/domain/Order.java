@@ -2,6 +2,7 @@ package deliverysystem.domain;
 
 import deliverysystem.domain.OrderPlaced;
 import deliverysystem.domain.OrderCanceled;
+import deliverysystem.domain.OrderAddRequested;
 import deliverysystem.OrderApplication;
 import javax.persistence.*;
 import java.util.List;
@@ -85,6 +86,12 @@ public class Order  {
     
     
     private String foodNm;
+    
+    
+    
+    
+    
+    private String cntn;
 
     @PostPersist
     public void onPostPersist(){
@@ -109,6 +116,11 @@ public class Order  {
 
         OrderCanceled orderCanceled = new OrderCanceled(this);
         orderCanceled.publishAfterCommit();
+
+
+
+        OrderAddRequested orderAddRequested = new OrderAddRequested(this);
+        orderAddRequested.publishAfterCommit();
 
     }
 

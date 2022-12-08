@@ -77,6 +77,7 @@
                     { text: "storeId", value: "storeId" },
                     { text: "status", value: "status" },
                     { text: "foodNm", value: "foodNm" },
+                    { text: "cntn", value: "cntn" },
                 ],
             order : [],
             newValue: {},
@@ -104,6 +105,7 @@
                 'storeId': 0,
                 'status': '',
                 'foodNm': '',
+                'cntn': '',
             }
         },
         methods: {

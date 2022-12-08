@@ -27,6 +27,7 @@
             <Number label="StoreId" v-model="value.storeId" :editMode="editMode"/>
             <String label="Status" v-model="value.status" :editMode="editMode"/>
             <String label="FoodNm" v-model="value.foodNm" :editMode="editMode"/>
+            <String label="Cntn" v-model="value.cntn" :editMode="editMode"/>
         </v-card-text>
 
         <v-card-actions>
@@ -47,6 +48,7 @@
             >
                 PlaceOrder
                 CancelOrder
+                AddRequest
             </v-btn>
             <v-btn
                     color="deep-purple lighten-2"

@@ -16,6 +16,7 @@ public class Order {
     private Long storeId;
     private String status;
     private String foodNm;
+    private String cntn;
 }
 
 

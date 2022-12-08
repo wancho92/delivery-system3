@@ -20,6 +20,7 @@
                             
                             
                             
+                            
                         </v-list-item-title>
 
                         <v-list-item-subtitle style="font-size:25px; font-weight:700;">
@@ -34,6 +35,7 @@
                             [ StoreId :  {{data.storeId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ Status :  {{data.status }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ FoodNm :  {{data.foodNm }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ Cntn :  {{data.cntn }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </v-list-item-subtitle>
 
                     </v-list-item-content>
@@ -125,6 +127,7 @@
                 'storeId': 0,
                 'status': '',
                 'foodNm': '',
+                'cntn': '',
             }
         },
         methods: {

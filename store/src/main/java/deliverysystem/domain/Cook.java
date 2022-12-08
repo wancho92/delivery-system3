@@ -53,6 +53,12 @@ public class Cook  {
     
     
     private Long storeId;
+    
+    
+    
+    
+    
+    private String cntn;
 
     @PostPersist
     public void onPostPersist(){
@@ -139,6 +145,27 @@ public class Cook  {
         /** Example 2:  finding and process
         
         repository().findById(payCanceled.get???()).ifPresent(cook->{
+            
+            cook // do something
+            repository().save(cook);
+
+
+         });
+        */
+
+        
+    }
+    public static void updateRequest(OrderAddRequested orderAddRequested){
+
+        /** Example 1:  new item 
+        Cook cook = new Cook();
+        repository().save(cook);
+
+        */
+
+        /** Example 2:  finding and process
+        
+        repository().findById(orderAddRequested.get???()).ifPresent(cook->{
             
             cook // do something
             repository().save(cook);

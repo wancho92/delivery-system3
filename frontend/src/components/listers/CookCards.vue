@@ -73,6 +73,7 @@
                 'orderId': 0,
                 'option': '',
                 'storeId': 0,
+                'cntn': '',
             }
         },
         methods:{

@@ -33,6 +33,9 @@
             <div>
                 <String label="FoodNm" v-model="item.foodNm" :editMode="editMode" @change="change" />
             </div>
+            <div>
+                <String label="Cntn" v-model="item.cntn" :editMode="editMode" @change="change" />
+            </div>
         </v-card-text>
 
         <v-card-actions>

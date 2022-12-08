@@ -72,6 +72,23 @@ public class PolicyHandler{
 
     }
 
+    @StreamListener(value=KafkaProcessor.INPUT, condition="headers['type']=='OrderAddRequested'")
+    public void wheneverOrderAddRequested_UpdateRequest(@Payload OrderAddRequested orderAddRequested){
+
+        OrderAddRequested event = orderAddRequested;
+        System.out.println("\n\n##### listener UpdateRequest : " + orderAddRequested + "\n\n");
+
+
+        
+
+        // Sample Logic //
+        Cook.updateRequest(event);
+        
+
+        
+
+    }
+
 }
 
 
